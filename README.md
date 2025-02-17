@@ -1,8 +1,6 @@
 # AgriArio - Proyecto de Hora de Libre Configuración
 
-###### Óscar García Sánchez
-
-###### Miguel Ángel de la Rosa Leva
+###### Óscar García Sánchez & Miguel Ángel de la Rosa Leva (2do DAW🌑)
 
 ## Descripción del Proyecto
 
