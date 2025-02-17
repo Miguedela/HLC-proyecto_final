@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <title>Title</title>
+    <title>Detalles del Tractor</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -12,51 +12,57 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     <header>
-        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+            <div class="container d-flex justify-content-between">
+                <a class="navbar-brand" href="/index">
+                    <img src="/img/logo.png" alt="Logo" class="img-fluid" style="max-height: 100px;">
+                </a>
+
+                <form action="/logout" method="post">
+                    <button type="submit" class="btn btn-outline-light">Cerrar sesión</button>
+                </form>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <h1>Tractor:</h1>
+    <main class="container py-5 flex-grow-1">
+        <h1 class="text-center mb-4">Detalles del Tractor</h1>
 
-        <table>
-            <tr>
-                <th><span th:text="${tractor.name}"></span></th>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <img th:src="@{'/img/' + ${tractor.image}}" alt="Imagen del tractor" width="100">
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <span th:text="${tractor.description}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <span th:text="${tractor.price}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <span th:text="${tractor.stock}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <form action="/index">
-                        <input type="submit" value="Volver">
-                    </form>
-                </td>
-            </tr>
-        </table>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4"><span th:text="${tractor.name}"></span></h2>
+
+                        <div class="text-center mb-4">
+                            <img th:src="@{'/img/' + ${tractor.image}}" alt="Imagen del tractor" class="card-img-top"
+                                style="max-height: 400px; object-fit: contain;">
+                        </div>
+
+                        <p class="card-text mb-3"><strong>Descripción:</strong> <span
+                                th:text="${tractor.description}"></span></p>
+                        <p class="card-text mb-3"><strong>Precio:</strong> $<span th:text="${tractor.price}"></span></p>
+                        <p class="card-text mb-3"><strong>Stock:</strong> <span th:text="${tractor.stock}"></span>
+                            unidades disponibles</p>
+
+                        <div class="d-flex justify-content-center mt-4">
+                            <form action="/index">
+                                <button type="submit" class="btn btn-primary">Volver</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <!-- place footer here -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 Mi Sitio - Todos los derechos reservados</p>
     </footer>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

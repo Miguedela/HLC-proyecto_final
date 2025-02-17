@@ -1,8 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <title>Title</title>
+    <title>Añadir Nuevo Tractor</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -12,44 +12,69 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
+
     <header>
-        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+            <div class="container d-flex justify-content-between">
+                <a class="navbar-brand" href="/index">
+                    <img src="/img/logo.png" alt="Logo" class="img-fluid" style="max-height: 100px;">
+                </a>
+
+                <form action="/logout" method="post">
+                    <button type="submit" class="btn btn-secondary">Cerrar sesión</button>
+                </form>
+            </div>
+        </nav>
     </header>
 
-    <main>
+    <main class="container py-5 flex-grow-1">
+        <h1 class="text-center mb-4">Añadir Nuevo Tractor</h1>
 
-        <h1>Añadir Nuevo Tractor</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form th:action="@{/addtractor}" th:object="${tractor}" enctype="multipart/form-data" method="post"
+                    class="bg-light p-4 rounded shadow-sm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre:</label>
+                        <input type="text" id="name" th:field="*{name}" class="form-control" required>
+                    </div>
 
-        <form th:action="@{/addtractor}" th:object="${tractor}" enctype="multipart/form-data" method="post">
-            <label>Nombre:</label>
-            <input type="text" th:field="*{name}" required><br>
+                    <div class="mb-3">
+                        <label for="imagen" class="form-label">Imagen del Tractor:</label>
+                        <input type="file" id="imagen" name="imagen" accept="image/*" class="form-control" required>
+                    </div>
 
-            <label for="imagen">Imagen del Tractor:</label>
-            <input type="file" id="imagen" name="imagen" accept="image/*" required><br>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Precio:</label>
+                        <input type="number" id="price" step="0.01" th:field="*{price}" class="form-control" required>
+                    </div>
 
-            <label>Precio:</label>
-            <input type="number" step="0.01" th:field="*{price}" required><br>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Descripción:</label>
+                        <input type="text" id="description" th:field="*{description}" class="form-control" required>
+                    </div>
 
-            <label>Descripcion:</label>
-            <input type="text" th:field="*{description}" required><br>
+                    <div class="mb-3">
+                        <label for="stock" class="form-label">Stock:</label>
+                        <input type="number" id="stock" th:field="*{stock}" class="form-control" required>
+                    </div>
 
-            <label>Stock:</label>
-            <input type="number" th:field="*{stock}" required><br>
+                    <button type="submit" class="btn btn-primary w-100">Añadir Tractor</button>
+                </form>
 
-            <button type="submit">Añadir Tractor</button>
-        </form>
-
-        <br>
-        <form action="/index">
-            <input type="submit" value="Volver">
-        </form>
-
+                <br>
+                <form action="/index">
+                    <input type="submit" value="Volver" class="btn btn-secondary w-100">
+                </form>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <!-- place footer here -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 Mi Sitio - Todos los derechos reservados</p>
     </footer>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
