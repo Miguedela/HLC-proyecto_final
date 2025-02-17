@@ -1,5 +1,9 @@
 # AgriArio - Proyecto de Hora de Libre Configuración
 
+###### Óscar García Sánchez
+
+###### Miguel Ángel de la Rosa Leva
+
 ## Descripción del Proyecto
 
 Este proyecto consiste en el desarrollo de una aplicación web para la gestión de una tienda de tractores. La aplicación permite a los usuarios realizar diversas operaciones con los tractores disponibles en el inventario, tales como añadir nuevos tractores, modificar la información de los existentes y eliminar los que ya no están disponibles. La aplicación está diseñada para ser utilizada por dos tipos de perfiles de usuario:
