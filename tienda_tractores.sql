@@ -45,8 +45,8 @@ CREATE TABLE `tractores` (
 
 INSERT INTO `tractores` (`id`, `description`, `image`, `name`, `price`, `stock`) VALUES
 (2, 'Descripción del tractor 1', 'jhondeere1.jpeg', 'Jhon Deere 1', 15000, 3),
-(3, 'Descripción del Jhon Deere 2', 'jhondeere2jpeg.jpeg', 'Jhon Deere 2', 40000, 15),
-(4, 'Descripción del tractor 3', 'jhonddere3jpeg.jpeg', 'Jhon Deere 2', 34599, 12);
+(3, 'Descripción del Jhon Deere 2', 'jhondeere2.jpeg', 'Jhon Deere 2', 40000, 15),
+(4, 'Descripción del tractor 3', 'jhonddere3j.jpeg', 'Jhon Deere 3', 34599, 12);
 
 -- --------------------------------------------------------
 
