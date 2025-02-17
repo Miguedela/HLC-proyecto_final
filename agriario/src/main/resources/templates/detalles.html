@@ -97,17 +97,23 @@
         </tr>
         <tr>
             <td colspan="2">
-                <img th:src="@{'img/' + ${tractor.image}}" alt="Imagen del tractor" width="100">
+                <img th:src="@{'/img/' + ${tractor.image}}" alt="Imagen del tractor" width="100">
             </td>
         </tr>
         <tr>
-            <td colspan="2"><span th:text="${tractor.description}"></span></td>
+            <td colspan="2">
+                <span th:text="${tractor.description}"></span>
+            </td>
         </tr>
         <tr>
-            <td colspan="2"><span th:text="${tractor.price}"></span></td>
+            <td colspan="2">
+                <span th:text="${tractor.price}"></span>
+            </td>
         </tr>
         <tr>
-            <td colspan="2"><span th:text="${tractor.stock}"></span></td>
+            <td colspan="2">
+                <span th:text="${tractor.stock}"></span>
+            </td>
         </tr>
         <tr>
             <td colspan="2">

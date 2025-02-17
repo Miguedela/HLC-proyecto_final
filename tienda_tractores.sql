@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-02-2025 a las 12:45:59
+-- Tiempo de generación: 17-02-2025 a las 16:44:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -26,26 +26,27 @@ USE `tienda_tractores`;
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tractor`
+-- Estructura de tabla para la tabla `tractores`
 --
 
-DROP TABLE IF EXISTS `tractor`;
-CREATE TABLE `tractor` (
-  `codigo` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `precio` decimal(10,0) NOT NULL,
-  `imagen` varchar(100) NOT NULL,
-  `descripcion` varchar(500) NOT NULL,
+DROP TABLE IF EXISTS `tractores`;
+CREATE TABLE `tractores` (
+  `id` bigint(20) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` double NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
 
 --
--- Volcado de datos para la tabla `tractor`
+-- Volcado de datos para la tabla `tractores`
 --
 
-INSERT INTO `tractor` (`codigo`, `nombre`, `precio`, `imagen`, `descripcion`, `stock`) VALUES
-(1, 'Tractor de prueba 2', 24750, '../View/img/tractor4.jfif', 'Descripción del tractor de prueba 2', 4),
-(4, 'a', 99999, '../View/img/tractor6.jfif', 'a', 4);
+INSERT INTO `tractores` (`id`, `description`, `image`, `name`, `price`, `stock`) VALUES
+(2, 'Descripción del tractor 1', 'jhondeere1.jpeg', 'Jhon Deere 1', 15000, 3),
+(3, 'Descripción del Jhon Deere 2', 'jhondeere2jpeg.jpeg', 'Jhon Deere 2', 40000, 15),
+(4, 'Descripción del tractor 3', 'jhonddere3jpeg.jpeg', 'Jhon Deere 2', 34599, 12);
 
 -- --------------------------------------------------------
 
@@ -55,21 +56,29 @@ INSERT INTO `tractor` (`codigo`, `nombre`, `precio`, `imagen`, `descripcion`, `s
 
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `contrasena` varchar(50) NOT NULL,
-  `perfil` varchar(20) NOT NULL
+  `id` bigint(20) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `contrasena` varchar(255) NOT NULL,
+  `perfil` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `contrasena`, `perfil`) VALUES
+(1, 'admin', '$2a$10$pAExvwHJY/NnuF.GAaHvVOBs3gHdDBVqkv1xEuE54pSs.y0IsLOSG', 'ADMIN'),
+(2, 'user', '$2a$10$hz.2cRSKyjaIvn76NDYzu.vSbuYAiUOk4h/HK95wn0JaYc1Cl3dQ6', 'USER');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `tractor`
+-- Indices de la tabla `tractores`
 --
-ALTER TABLE `tractor`
-  ADD PRIMARY KEY (`codigo`);
+ALTER TABLE `tractores`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuario`
@@ -82,16 +91,16 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `tractor`
+-- AUTO_INCREMENT de la tabla `tractores`
 --
-ALTER TABLE `tractor`
-  MODIFY `codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `tractores`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
