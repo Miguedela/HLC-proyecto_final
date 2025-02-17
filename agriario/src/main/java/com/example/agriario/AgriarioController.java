@@ -21,6 +21,11 @@ public class AgriarioController {
                 return "index";
         }
 
+        @GetMapping("/login")
+        public String mostrarLogin() {
+                return "login";
+        }
+
         // DETALLES: Ver detalles de un tractor
         @GetMapping("/detalles/{id}")
         public String verDetalles(@PathVariable("id") Long id, Model model) {
