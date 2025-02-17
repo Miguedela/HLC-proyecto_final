@@ -1,4 +1,4 @@
-# Tienda de Tractores - Proyecto de Desarrollo de Aplicaciones Web
+# AgriArio - Proyecto de Hora de Libre Configuración
 
 ## Descripción del Proyecto
 
