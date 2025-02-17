@@ -92,12 +92,12 @@
 <body>
     <h1>Añadir Nuevo Tractor</h1>
 
-    <form th:action="@{/addtractor}" th:object="${tractor}" method="post">
+    <form th:action="@{/addtractor}" th:object="${tractor}" enctype="multipart/form-data" method="post">
         <label>Nombre:</label>
         <input type="text" th:field="*{name}" required><br>
 
-        <label>Imagen (URL):</label>
-        <input type="text" th:field="*{image}"><br>
+        <label for="imagen">Imagen del Tractor:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/*" required><br>
 
         <label>Precio:</label>
         <input type="number" step="0.01" th:field="*{price}" required><br>

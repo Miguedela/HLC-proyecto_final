@@ -105,7 +105,7 @@
             <td><span th:text="${tractor.name}"></span></td>
             <td>
                 <a th:href="@{/detalles/{id}(id=${tractor.id})}">
-                    <img th:src="${tractor.image}" alt="Imagen del tractor" width="100">
+                    <img th:src="@{'/img/' + ${tractor.image}}" alt="Imagen del tractor" width="100">
                 </a>
             </td>
             <td><span th:text="${tractor.price}"></span></td>

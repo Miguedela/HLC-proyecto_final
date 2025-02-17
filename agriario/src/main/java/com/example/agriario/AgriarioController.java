@@ -4,7 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -46,7 +52,9 @@ public class AgriarioController {
 
         // AÑADIR TRACTOR
         @PostMapping("/addtractor")
-        public String addTractor(@ModelAttribute Tractor tractor) {
+        public String addTractor(@ModelAttribute Tractor tractor, @RequestParam("imagen") MultipartFile imagen) {
+                String fileName = subirImagen(imagen);
+                tractor.setImage(fileName);
                 tractorRepository.save(tractor);
                 return "redirect:/index";
         }
@@ -56,5 +64,29 @@ public class AgriarioController {
         public String eliminarTractor(@PathVariable("id") Long id) {
                 tractorRepository.deleteById(id);
                 return "redirect:/index";
+        }
+
+        //Funcion para añadir imagenes al serv
+        public String subirImagen(MultipartFile imagen) {
+                // Ruta base para guardar las imágenes
+                String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
+
+                try {
+                        // Crear el directorio si no existe
+                        Path uploadPath = Paths.get(uploadDir);
+                        if (!Files.exists(uploadPath)) {
+                                Files.createDirectories(uploadPath);
+                        }
+
+                        // Guardar el archivo
+                        String fileName = imagen.getOriginalFilename();
+                        String rutaArchivo = uploadDir + fileName;
+                        imagen.transferTo(new File(rutaArchivo));
+
+                        return fileName;  // Retornamos el nombre del archivo
+                } catch (IOException e) {
+                        e.printStackTrace();
+                        return null;  // En caso de error, retornamos null
+                }
         }
 }
