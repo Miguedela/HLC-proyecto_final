@@ -2,48 +2,86 @@
 <html lang="en">
 
 <head>
-    <title>Title</title>
+    <title>Login</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- Bootstrap CSS v5.3.2 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body>
     <header>
-        <!-- place navbar here -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="#">Mi Sitio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <h2>Iniciar Sesión</h2>
-        <form action="/login" method="post">
-            <label>Usuario:</label>
-            <input type="text" name="username" required />
-            <br>
-            <label>Contraseña:</label>
-            <input type="password" name="password" required />
-            <br>
-            <button type="submit">Ingresar</button>
-        </form>
-        <p th:if="${param.error}">Usuario o contraseña incorrectos</p>
-
-        <form action="/nuevoUsuario" method="post">
-            <button type="submit">Agregar usuario</button>
-        </form>
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">Iniciar Sesión</h2>
+                        <form action="/login" method="post">
+                            <div class="mb-3">
+                                <label class="form-label">Usuario:</label>
+                                <input type="text" name="username" class="form-control" required />
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Contraseña:</label>
+                                <input type="password" name="password" class="form-control" required />
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                        </form>
+                        <p class="text-danger mt-3 text-center" th:if="${param.error}">Usuario o contraseña incorrectos
+                        </p>
+                        <form action="/nuevoUsuario" method="post" class="mt-3">
+                            <button type="submit" class="btn btn-secondary w-100">Agregar usuario</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-    <footer>
-        <!-- place footer here -->
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2025 Mi Sitio - Todos los derechos reservados</p>
     </footer>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
