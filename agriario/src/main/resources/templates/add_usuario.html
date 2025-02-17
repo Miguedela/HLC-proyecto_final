@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Usuario</title>
+
+</head>
+
+<body>
+
+    <h2>Crear Nuevo Usuario</h2>
+
+    <!-- Formulario para agregar un nuevo usuario -->
+    <form th:action="@{/addusuario}" th:object="${usuario}" method="post">
+        <div>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" th:field="*{nombre}" required />
+        </div>
+
+        <div>
+            <label for="contrasena">Contraseña:</label>
+            <input type="password" id="contrasena" th:field="*{contrasena}" required />
+        </div>
+
+        <div>
+            <label for="perfil">Perfil:</label>
+            <select id="perfil" th:field="*{perfil}">
+                <option value="USER">Usuario</option>
+                <option value="ADMIN">Administrador</option>
+            </select>
+        </div>
+
+        <div>
+            <button type="submit">Crear Usuario</button>
+        </div>
+    </form>
+
+    <!-- Enlace para volver al listado de usuarios -->
+    <a href="/login">Volver al login</a>
+
+</body>
+
+</html>

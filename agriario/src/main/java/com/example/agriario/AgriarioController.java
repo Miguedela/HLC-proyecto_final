@@ -1,6 +1,7 @@
 package com.example.agriario;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,10 @@ public class AgriarioController {
 
         @Autowired
         private TractorRepository tractorRepository;
+        @Autowired
+        private UsuarioRepository usuarioRepository;
+        @Autowired
+        private PasswordEncoder passwordEncoder;
 
         // INDEX: Listar tractores
         @GetMapping("/index")
@@ -50,6 +55,24 @@ public class AgriarioController {
                 return "add_tractor";
         }
 
+        // VER FORM AÑADIR USUARIO
+        @GetMapping("/nuevoUsuario")
+        public String verFormularioUsuario(Model model) {
+                model.addAttribute("usuario", new Usuario());
+                return "add_usuario";
+        }
+
+        // Añadir Usuario
+        @PostMapping("/addusuario")
+        public String agregarUsuario(@ModelAttribute Usuario usuario) {
+
+                String contrasenaEncriptada = passwordEncoder.encode(usuario.getContrasena());
+                usuario.setContrasena(contrasenaEncriptada);
+
+                usuarioRepository.save(usuario); // Guarda el nuevo usuario en la base de datos
+                return "redirect:/index"; // Redirige al índice o a una página de confirmación
+        }
+
         // AÑADIR TRACTOR
         @PostMapping("/addtractor")
         public String addTractor(@ModelAttribute Tractor tractor, @RequestParam("imagen") MultipartFile imagen) {
@@ -66,7 +89,7 @@ public class AgriarioController {
                 return "redirect:/index";
         }
 
-        //Funcion para añadir imagenes al serv
+        // Funcion para añadir imagenes al serv
         public String subirImagen(MultipartFile imagen) {
                 // Ruta base para guardar las imágenes
                 String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/img/";
@@ -83,10 +106,10 @@ public class AgriarioController {
                         String rutaArchivo = uploadDir + fileName;
                         imagen.transferTo(new File(rutaArchivo));
 
-                        return fileName;  // Retornamos el nombre del archivo
+                        return fileName; // Retornamos el nombre del archivo
                 } catch (IOException e) {
                         e.printStackTrace();
-                        return null;  // En caso de error, retornamos null
+                        return null; // En caso de error, retornamos null
                 }
         }
 }
