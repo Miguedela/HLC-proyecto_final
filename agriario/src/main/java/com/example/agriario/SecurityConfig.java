@@ -9,7 +9,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
-
 @Configuration
 public class SecurityConfig {
 
@@ -21,24 +20,22 @@ public class SecurityConfig {
                         .requestMatchers("/login").permitAll() // Permitir login
                         .requestMatchers("/index", "/detalles/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/veraddtractor", "/addtractor", "/eliminar/**").hasRole("ADMIN")
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login") // Página de login
                         .defaultSuccessUrl("/index", true) // Redirigir tras login exitoso
-                        .permitAll()
-                )
+                        .permitAll())
                 .logout(logout -> logout
                         .logoutUrl("/logout")
                         .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                );
+                        .permitAll());
 
         return http.build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
     }
 
