@@ -20,6 +20,7 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
+      - ./src/main/resources/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_DATABASE: "agriario_db"
       MYSQL_USER: "migue"

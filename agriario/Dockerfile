@@ -19,7 +19,7 @@ COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8080
 
 # Base de datos
-ENV DATABASE_URL jdbc:mysql://mysqldb:3306/tienda_tractores
+ENV DATABASE_URL jdbc:mysql://mysqldb:3306/agriario_db
 ENV DATABASE_USERNAME root
 ENV DATABASE_PASSWORD root
 ENV DATABASE_DRIVER com.mysql.cj.jdbc.Driver
