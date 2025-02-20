@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `tienda_tractores`
 --
-CREATE DATABASE IF NOT EXISTS `tienda_tractores` DEFAULT CHARACTER SET utf32 COLLATE utf32_spanish_ci;
-USE `tienda_tractores`;
+CREATE DATABASE IF NOT EXISTS `agriario_db` DEFAULT CHARACTER SET utf32 COLLATE utf32_spanish_ci;
+USE `agriario_db`;
 
 -- --------------------------------------------------------
 
@@ -46,7 +46,7 @@ CREATE TABLE `tractores` (
 INSERT INTO `tractores` (`id`, `description`, `image`, `name`, `price`, `stock`) VALUES
 (2, 'Descripción del tractor 1', 'jhondeere1.jpeg', 'Jhon Deere 1', 15000, 3),
 (3, 'Descripción del Jhon Deere 2', 'jhondeere2.jpeg', 'Jhon Deere 2', 40000, 15),
-(4, 'Descripción del tractor 3', 'jhonddere3j.jpeg', 'Jhon Deere 3', 34599, 12);
+(4, 'Descripción del tractor 3', 'jhonddere3.jpeg', 'Jhon Deere 3', 34599, 12);
 
 -- --------------------------------------------------------
 
