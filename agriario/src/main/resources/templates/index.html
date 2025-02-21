@@ -38,7 +38,7 @@
                         <th>Imagen</th>
                         <th>Precio</th>
                         <th>Stock</th>
-                        <th>Acción</th>
+                        <th colspan="2">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +52,11 @@
                         </td>
                         <td><span th:text="${tractor.price}"></span></td>
                         <td><span th:text="${tractor.stock}"></span></td>
+                        <td>
+                            <form th:action="@{/edit/{id}(id=${tractor.id})}" method="get">
+                                <button type="submit" class="btn btn-primary btn-sm">Editar</button>
+                            </form>
+                        </td>
                         <td>
                             <form th:action="@{/eliminar/{id}(id=${tractor.id})}" method="get">
                                 <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>

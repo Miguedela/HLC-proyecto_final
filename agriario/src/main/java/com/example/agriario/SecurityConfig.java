@@ -17,10 +17,10 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/login", "/nuevoUsuario", "/addusuario").permitAll() // Permitir login y
-                                                                                               // registro
+                        .requestMatchers("/login", "/nuevoUsuario", "/addusuario").permitAll() // Permitir
+                                                                                               // login y registro
                         .requestMatchers("/index", "/detalles/**").hasAnyRole("USER", "ADMIN")
-                        .requestMatchers("/veraddtractor", "/addtractor", "/eliminar/**").hasRole("ADMIN")
+                        .requestMatchers("/veraddtractor", "/addtractor", "/edit/**", "/eliminar/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(login -> login
                         .loginPage("/login") // Página de login
